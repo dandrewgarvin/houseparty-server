@@ -1,0 +1,27 @@
+{
+  "parser": "babel-eslint",
+  "parserOptions": {
+    "ecmaVersion": 2018,
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true,
+      "arrowFunctions": true
+    }
+  },
+  "extends": ["eslint:recommended", "eslint-config-prettier"],
+  "rules": {
+    "eqeqeq": "error",
+    "no-console": "off",
+    "no-debugger": "off",
+    "no-unused-vars": "warn",
+    "react/jsx-uses-vars": "error",
+    "no-case-declarations": "off"
+  },
+  "env": {
+    "browser": true,
+    "node": true,
+    "jest": true,
+    "es6": true
+  },
+  "plugins": ["react", "jest"]
+}

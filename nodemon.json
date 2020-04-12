@@ -1,0 +1,4 @@
+{
+  "watch": ["src/**/*", "db/**/*", ".env*"],
+  "ext": "js,json,sql,yml,yaml,env,graphql"
+}

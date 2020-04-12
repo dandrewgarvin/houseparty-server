@@ -1,0 +1,91 @@
+{
+  "name": "houseparty-server",
+  "version": "0.1.0",
+  "private": true,
+  "author": {
+    "name": "Andrew Garvin",
+    "email": "me@andrewgarv.in",
+    "url": "https://andrewgarv.in"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dandrewgarvin/houseparty-server.git"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "engines": {
+    "node": "12"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "main": "src/app.js",
+  "proxy": "http://localhost:4000",
+  "scripts": {
+    "test": "dotenv -e .env.development jest",
+    "start": "rm -rf ./node_modules/.cache/babel-loader && nodemon src/app.js --exec \"npx babel-node -r ./node_modules/dotenv/config\"",
+    "start:prod": "babel-node src/app.js -r node_modules/dotenv/config",
+    "migrate:up": "db-migrate up",
+    "migrate:down": "db-migrate down",
+    "migrate:create": "db-migrate create",
+    "lint": "eslint src",
+    "format": "npm run prettier -- --write",
+    "precommit": "lint-staged",
+    "prettier": "prettier \"**/*.+(ts|js|jsx|json|yml|yaml|scss|css)\"",
+    "validate": "npm run lint && npm run prettier -- --list-different"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "dependencies": {
+    "@babel/core": "^7.6.2",
+    "@babel/node": "^7.6.2",
+    "@babel/plugin-proposal-class-properties": "^7.5.5",
+    "@babel/preset-env": "^7.6.2",
+    "@babel/preset-react": "^7.0.0",
+    "@babel/register": "^7.6.2",
+    "apollo-server": "^2.9.5",
+    "apollo-server-express": "^2.9.5",
+    "babel-eslint": "^10.0.3",
+    "babel-plugin-import-graphql": "^2.7.0",
+    "bcrypt": "^3.0.6",
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "graphql": "^14.5.8",
+    "graphql-tools": "^4.0.5",
+    "lodash": "^4.17.15",
+    "massive": "^6.1.1",
+    "moment": "^2.24.0",
+    "pg": "^7.12.1"
+  },
+  "devDependencies": {
+    "chalk": "^2.4.2",
+    "db-migrate": "^0.11.6",
+    "db-migrate-pg": "^1.0.0",
+    "dotenv": "^8.1.0",
+    "dotenv-cli": "^2.0.1",
+    "eslint": "^6.5.1",
+    "eslint-config-prettier": "^6.4.0",
+    "eslint-plugin-jest": "^22.17.0",
+    "eslint-plugin-react": "^7.16.0",
+    "husky": "^3.0.8",
+    "identity-obj-proxy": "^3.0.0",
+    "jest": "^24.9.0",
+    "lint-staged": "^9.4.1",
+    "nodemon": "^1.19.3",
+    "prettier": "^1.18.2"
+  }
+}

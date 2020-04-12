@@ -1,0 +1,11 @@
+{
+  "defaultEnv": "local",
+  "local": {
+    "driver": "pg",
+    "user": { "env": "" },
+    "password": { "env": "" },
+    "host": { "env": "" },
+    "database": { "env": "" },
+    "ssl": true
+  }
+}

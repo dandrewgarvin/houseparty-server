@@ -1,0 +1,14 @@
+type GetUser {
+  id: String!
+  name: String
+  email: String
+}
+
+input GetUserInput {
+  email: String!
+  password: String!
+}
+
+extend type Query {
+  getUser(email: String!, password: String!): GetUser
+}
