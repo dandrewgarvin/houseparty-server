@@ -11,7 +11,7 @@ import userResolver from './resolvers/users';
 export default makeExecutableSchema({
   typeDefs: [defaultTypes, userTypes],
   resolvers: {
-    Query: Object.assign({}, userResolver.Query),
-    Mutation: Object.assign({}, userResolver.Mutation),
+    Query: { ...userResolver.Query },
+    Mutation: { ...userResolver.Mutation },
   },
 });
