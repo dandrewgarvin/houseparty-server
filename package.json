@@ -30,7 +30,6 @@
     ]
   },
   "main": "src/app.js",
-  "proxy": "http://localhost:4000",
   "scripts": {
     "test": "dotenv -e .env.development jest",
     "start": "rm -rf ./node_modules/.cache/babel-loader && nodemon src/app.js --exec \"npx babel-node -r ./node_modules/dotenv/config\"",
@@ -67,9 +66,8 @@
     "graphql": "^14.5.8",
     "graphql-tools": "^4.0.5",
     "lodash": "^4.17.15",
-    "massive": "^6.1.1",
-    "moment": "^2.24.0",
-    "pg": "^7.12.1"
+    "massive": "^6.3.0",
+    "moment": "^2.24.0"
   },
   "devDependencies": {
     "chalk": "^2.4.2",
