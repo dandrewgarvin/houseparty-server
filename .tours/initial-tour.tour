@@ -1,0 +1,40 @@
+{
+  "$schema": "https://aka.ms/codetour-schema",
+  "title": "Initial Tour",
+  "steps": [
+    {
+      "title": "Introduction",
+      "description": "welcome to the tour"
+    },
+    {
+      "file": "src/app.js",
+      "selection": {
+        "start": {
+          "line": 20,
+          "character": 4
+        },
+        "end": {
+          "line": 33,
+          "character": 10
+        }
+      },
+      "description": "this is the database setup",
+      "contents": "const express = require('express');\nconst bodyParser = require('body-parser');\nconst cors = require('cors');\nconst massive = require('massive');\n\nconst { ApolloServer } = require('apollo-server-express');\nconst schema = require('./graphql/schema.js');\n\n// import routes from './routes';\n\nfunction init() {\n  return new Promise(resolve => {\n    // Create server instance\n    const app = express();\n\n    // ==================== TOP-LEVEL MIDDLEWARE ==================== //\n    app.use(cors());\n    app.use(bodyParser.json());\n\n    massive(process.env.DATABASE_URI).then(db => {\n      console.log('✅ Database Initialized');\n\n      app.set('db', db);\n\n      // =================== DEFINE GRAPHQL ROUTES ==================== //\n      const server = new ApolloServer({\n        schema: schema.default,\n        context: () => {\n          return {\n            db: db,\n          };\n        },\n      });\n\n      server.applyMiddleware({ app, path: '/graphql' });\n\n      // ===================== DEFINE REST ROUTES ===================== //\n      app.get('/health', (req, res) => {\n        res.status(200).send('Working');\n      });\n\n      // routes(app);\n\n      // ======================== START SERVER ======================== //\n      if (!module.parent) {\n        const PORT = process.env.PORT || 4000;\n        app.listen(PORT, () => {\n          console.log(`🚀 Listening on port ${PORT}`);\n        });\n      }\n\n      resolve(app);\n    });\n  });\n}\n\nif (!module.parent) {\n  init(); // start server\n}\n\nexport default init; // passed to parent for testing purposes\n"
+    },
+    {
+      "file": ".gitignore",
+      "selection": {
+        "start": {
+          "line": 1,
+          "character": 1
+        },
+        "end": {
+          "line": 2,
+          "character": 14
+        }
+      },
+      "description": "the end!",
+      "contents": ".env*\nnode_modules/"
+    }
+  ]
+}
