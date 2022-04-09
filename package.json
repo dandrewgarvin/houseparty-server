@@ -67,7 +67,7 @@
     "graphql-tools": "^4.0.5",
     "lodash": "^4.17.15",
     "massive": "^6.3.0",
-    "moment": "^2.24.0"
+    "moment": "^2.29.2"
   },
   "devDependencies": {
     "chalk": "^2.4.2",
